@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-pal="sunset">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Irfan Sirkar · ML Developer</title>
+<meta name="description" content="Mohammad Irfan Sirkar, ML developer from Hyderabad. LLM tools, real-time computer vision, medical AI, and a little game dev.">
+<meta property="og:title" content="Irfan Sirkar · ML Developer">
+<meta property="og:description" content="LLM tools, real-time computer vision and medical AI, from hackathon to product.">
+<meta name="theme-color" content="#F0643A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23F0643A%22/%3E%3Ctext x=%2250%22 y=%2266%22 text-anchor=%22middle%22 font-family=%22Arial Black,Arial%22 font-weight=%22900%22 font-size=%2244%22 fill=%22white%22%3EMI%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Silkscreen:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<header class="nav" id="nav">
+  <div class="in-w">
+    <a class="logo" href="#top">irfan<br>sirkar</a>
+    <nav class="links" aria-label="Sections"><a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#journey">Journey</a><a href="#play">Play</a><a href="#contact">Contact</a></nav>
+    <div class="nav-r"><a class="btn" href="#contact">Hire me</a><button class="pal-btn" id="palBtn" type="button" aria-label="Change colour theme" aria-expanded="false"></button></div>
+  </div>
+</header>
+<div class="pal-pop" id="palPop" hidden><b>Colour theme</b></div>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="sky"></div><div class="clouds"></div><div class="gridp"></div>
+  <svg class="scrib" viewBox="0 0 1000 562" preserveAspectRatio="none"><path pathLength="1" d="M-20 140 C 120 60, 260 360, 180 470 S 420 640, 560 520 S 760 300, 900 470 S 1060 560, 1020 260 S 820 40, 640 120"/></svg>
+  <div class="hud" id="hud"><span>COINS <b id="cn">0</b></span><span>HP <b id="hp">♥♥♥</b></span><span>LV <b id="lv">1</b></span></div>
+  <div class="hl" id="hl"><div class="l1"><span class="t" style="--d:0s">TRAIN</span><button class="screen" id="screen" type="button" aria-label="Mini game, click to jump"><canvas width="96" height="56"></canvas><span>CLICK = JUMP</span></button><span class="t" style="--d:.1s">PLAY</span></div><span class="s">SMART MODELS, ONE MORE LEVEL.</span></div>
+  <div id="stickers"></div>
+  <a class="meet" href="#about">MEET IRFAN <i>↓</i></a>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="in-w">
+    <span class="kick" data-rv>01 · Meet Irfan</span>
+    <div class="grid">
+      <p class="words" id="words">I’m Mohammad Irfan Sirkar, an ML developer from Hyderabad studying AI and Data Science at MJCET. I build LLM tools, real-time computer vision and medical AI, and I ship them as full-stack apps. I’ve led hackathon teams, won two podiums in one month, and I still find time to make tiny games.</p>
+      <div class="pcard" id="pcard" data-rv="rot">
+        <div class="top"><div class="ava">MI</div><div><h3>Mohammad Irfan Sirkar</h3><span class="cls">Class: ML Developer · Hyderabad</span><br><span class="cls">Guild: MJCET · B.E. AI &amp; DS · 2023–</span></div></div>
+        <div class="bars" id="bars"></div>
+        <p class="note">Bars show how many of my 9 projects use each skill.</p>
+      </div>
+    </div>
+    <div class="counters" id="counters"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="in-w">
+    <span class="kick" data-rv>02 · Inventory</span>
+    <h2 class="big" data-rv>Skills, <em>equipped.</em></h2>
+    <div class="tabs" id="tabs"></div>
+    <div class="inv" id="inv"></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="pin" id="pin">
+    <div class="in-w head"><div><span class="kick">03 · Selected work</span><h2 class="big">Projects <em>shipped.</em></h2></div><p>Keep scrolling → the cards slide sideways</p></div>
+    <div class="track" id="track"></div>
+    <div class="pbar"><i id="pbar"></i></div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey" id="journey">
+  <div class="in-w">
+    <span class="kick" data-rv>04 · Level map</span>
+    <h2 class="big" data-rv>The journey <em>so far.</em></h2>
+    <div class="map" id="map"><svg id="mapSvg"><path class="road" id="road"/><path class="draw" id="drawP" pathLength="1"/></svg></div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="ach" id="ach">
+  <div class="in-w">
+    <span class="kick" data-rv>05 · Trophy room</span>
+    <h2 class="big" data-rv>Achievements <em>unlocked.</em></h2>
+    <div class="trophies" id="trophies"></div>
+  </div>
+</section>
+
+<!-- PLAY -->
+<section class="play" id="play">
+  <div class="in-w">
+    <span class="kick" data-rv>06 · Game dev corner</span>
+    <h2 class="big" data-rv>Take a <em>break.</em></h2>
+    <div class="arcade">
+      <div class="cab" data-rv="scale"><canvas id="big" width="200" height="100"></canvas><div class="ov" id="ov">CLICK OR SPACE TO START</div><div class="row"><span>SCORE <b id="sc">0</b></span><span>BEST <b id="best">0</b></span></div></div>
+      <div data-rv="right"><p style="margin:0;font-size:18px">A tiny endless runner, written from scratch in vanilla JavaScript and canvas: no engine, no assets. Every sprite is drawn in code.</p><ul><li>Jump bugs, grab coins, speed ramps up</li><li>Click, tap or press Space to jump</li><li>Your best score is saved in this browser</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div id="confetti"></div>
+  <div class="in-w">
+    <span class="kick" data-rv>07 · Player two?</span>
+    <h2 class="big" data-rv="scale">Let’s build <em>something.</em></h2>
+    <div class="email" data-rv><span id="mail">sirkarks@gmail.com</span><button class="btn" id="copy" type="button">Copy email</button></div>
+    <div class="cta-row" data-rv><a class="btn ghost" href="https://github.com/irfansirkar" target="_blank" rel="noopener">GitHub ↗</a><a class="btn ghost" href="#work">See projects</a></div>
+  </div>
+  <div class="marq"><div id="marq"><span>OPEN TO ML ROLES ✦</span><span>INTERNSHIPS ✦</span><span>HACKATHON TEAMS ✦</span><span>GAME JAMS ✦</span><span>OPEN TO ML ROLES ✦</span><span>INTERNSHIPS ✦</span><span>HACKATHON TEAMS ✦</span><span>GAME JAMS ✦</span></div></div>
+</section>
+</main>
+<footer><div class="in-w"><span>© 2026 Mohammad Irfan Sirkar · Hyderabad</span><span>Built from scratch: no templates, no engines</span></div></footer>
+<div class="toast" id="toast"></div>
+<script src="js/main.js"></script>
+</body>
+</html>
