@@ -22,6 +22,7 @@ npx serve .
 All text comes from [`js/data.js`](js/data.js): name, summary, work, achievements, projects and the skill tree. Change that file and reload.
 
 - `linkedin` / `github`: paste your URLs and the buttons appear automatically.
+- `projects[].links`: optional list of `{label, url}` buttons shown on the project card and in the resume, e.g. a GitHub repo or live demo.
 - `skills[].items`: each skill lists which project ids (or character ids) unlock it in the Skill Tree.
 - To add a project, add it to `projects` and give it a map position in `SPOTS` in [`js/game.js`](js/game.js).
 

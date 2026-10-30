@@ -3,6 +3,7 @@
 'use strict';
 
 const R = window.RESUME;
+const NP = R.projects.length;
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -80,6 +81,7 @@ const SPOTS = {
   teachassist: [20, 6, 'west of the Academy'],
   medimap2: [49, 7, 'on the lake island'],
   skentics: [22, 34, 'deep in the southern forest'],
+  domainclash: [52, 13, 'between the lake and the Trophy Hall'],
 };
 const BUG_DEFS = [['nan', 14, 8], ['slime', 35, 30], ['ghost', 44, 26], ['nan', 52, 28], ['slime', 17, 40], ['ghost', 38, 14], ['nan', 6, 9]];
 const BUG_NAMES = {nan: 'NaN Bug', slime: 'Overfit Slime', ghost: 'Vanishing Gradient'};
@@ -310,7 +312,8 @@ const fresh = () => ({xp: 0, crystals: [], talked: [], bugs: [], contact: false,
 let S = Object.assign(fresh(), store.get('save', {}));
 const save = () => { if (S.started) { S.pos = {x: player.x, y: player.y}; store.set('save', S); } };
 
-const LV = [0, 80, 200, 350, 520, 720, 920, 1120, 1340, 1580];
+// LV 10 lines up with 100%: 6 characters × 60, 9 crystals × 120, 7 bugs × 30, contact 50.
+const LV = [0, 80, 200, 350, 520, 720, 940, 1160, 1420, 1700];
 const levelOf = xp => { let l = 1; for (let i = 1; i < LV.length; i++) if (xp >= LV[i]) l = i + 1; return l; };
 
 const QUESTS = [
@@ -319,7 +322,7 @@ const QUESTS = [
   {id: 'guild', t: 'Check in at the Guild Hall (experience)', done: () => S.talked.includes('guild'), target: 'guild'},
   {id: 'keeper', t: 'Inspect the Trophy Hall (awards)', done: () => S.talked.includes('keeper'), target: 'keeper'},
   {id: 'sage', t: 'Consult the Skill Sage (skills)', done: () => S.talked.includes('sage'), target: 'sage'},
-  {id: 'crystals', t: 'Collect all 8 Data Crystals (projects)', done: () => S.crystals.length >= 8, prog: () => `${S.crystals.length}/8`},
+  {id: 'crystals', t: `Collect all ${NP} Data Crystals (projects)`, done: () => S.crystals.length >= NP, prog: () => `${S.crystals.length}/${NP}`},
   {id: 'bugs', t: 'Squash all 7 bugs loose in town', done: () => S.bugs.length >= BUG_DEFS.length, prog: () => `${S.bugs.length}/${BUG_DEFS.length}`},
   {id: 'contact', t: 'Send Irfan a message at the Post Office', done: () => S.contact, target: 'post'},
 ];
@@ -327,8 +330,8 @@ const allDone = () => QUESTS.every(q => q.done());
 
 const ACH = [
   ['first-crystal', 'First Crystal', 'Found your first project', () => S.crystals.length >= 1],
-  ['half', 'Halfway Hoarder', '4 of 8 projects found', () => S.crystals.length >= 4],
-  ['all-crystals', 'Data Hoarder', 'Every project collected', () => S.crystals.length >= 8],
+  ['half', 'Halfway Hoarder', `${Math.ceil(NP / 2)} of ${NP} projects found`, () => S.crystals.length >= Math.ceil(NP / 2)],
+  ['all-crystals', 'Data Hoarder', 'Every project collected', () => S.crystals.length >= NP],
   ['first-bug', 'First Squash', 'Fixed your first bug', () => S.bugs.length >= 1],
   ['all-bugs', 'Zero Bugs in Prod', 'Every bug squashed', () => S.bugs.length >= BUG_DEFS.length],
   ['social', 'Networker', 'Talked to everyone in town', () => NPCS.every(n => S.talked.includes(n.id))],
@@ -585,7 +588,7 @@ function talk(n) {
         'Meow! I’m Byte, Irfan’s debugging cat. Welcome to Irfan Quest!',
         'This whole town is Irfan’s portfolio. Every building, crystal and bug tells you something about him.',
         'Move with WASD or the arrow keys, or just tap where you want to go. Press E or Space to talk to people.',
-        'Glowing Data Crystals are his real projects. There are 8 of them. Bugs are running loose too: catch them to squash them!',
+        `Glowing Data Crystals are his real projects. There are ${NP} of them, and many link to the real code. Bugs are running loose too: catch them to squash them!`,
         'Finish every quest to reach LV 10. In a hurry? Press R any time for the plain resume. No judgement. Meow.',
         {t: 'Ready?', choices: [{l: 'Let’s go!'}, {l: 'Show me the quest log', close: true, f: openQuests}]},
       ] : allDone() ? [
@@ -593,7 +596,7 @@ function talk(n) {
         {t: 'Want to see your ending again?', choices: [{l: 'Yes please', close: true, f: openEnding}, {l: 'I’ll keep exploring'}]},
       ] : [
         `Psst. Next up: ${nextQuestText()}.`,
-        `Crystals found: ${S.crystals.length}/8. Purple dots on the minimap are crystals, red dots are bugs.`,
+        `Crystals found: ${S.crystals.length}/${NP}. Purple dots on the minimap are crystals, red dots are bugs.`,
       ];
       break;
     case 'prof':
@@ -673,6 +676,9 @@ $('panelBody').addEventListener('click', e => {
 });
 
 const chip = (s, on = false) => `<span class="chip${on ? ' on' : ''}">${esc(s)}</span>`;
+const linkButtons = p => p.links?.length
+  ? `<div class="links">${p.links.map(l => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>`
+  : '';
 function openQuests() {
   const lv = levelOf(S.xp), mins = Math.floor(S.tPlay / 60), secs = String(Math.floor(S.tPlay % 60)).padStart(2, '0');
   const done = QUESTS.filter(q => q.done()).length;
@@ -684,10 +690,10 @@ function openQuests() {
     <div class="reset-row"><button type="button" class="btn btn-danger" data-go="reset">Reset progress</button></div>`);
 }
 function openDex() {
-  Panel.show(`Project Dex · ${S.crystals.length}/8`, `
-    <p class="muted">Each glowing Data Crystal in town is one of Irfan’s real projects. Click a found project to read it.</p>
+  Panel.show(`Project Dex · ${S.crystals.length}/${NP}`, `
+    <p class="muted">Each glowing Data Crystal in town is one of Irfan’s real projects. Click a found project to read it and open its code.</p>
     <div class="dex">${R.projects.map(p => S.crystals.includes(p.id)
-      ? `<button type="button" data-proj="${p.id}" style="--c:${p.color}"><strong>${esc(p.name)}</strong><span>${esc(p.tagline)}</span><span>${esc(p.date)}</span></button>`
+      ? `<button type="button" data-proj="${p.id}" style="--c:${p.color}"><strong>${esc(p.name)}</strong><span>${esc(p.tagline)}</span><span>${esc(p.date)}${p.links?.length ? ' · code on GitHub' : ''}</span></button>`
       : `<button type="button" class="locked" style="--c:#3A3F6B" disabled><strong>???</strong><span>Hint: ${esc(SPOTS[p.id][2])}</span></button>`).join('')}</div>
     <p class="muted">Want them all at once? <button type="button" class="btn" data-go="resume">Open the plain resume</button></p>`);
 }
@@ -695,13 +701,14 @@ function openProject(p, freshSkills) {
   const isNew = !!freshSkills;
   Panel.show(isNew ? 'Data Crystal found!' : p.name, `
     <div class="proj" style="--c:${p.color}">
-      ${isNew ? `<span class="kicker">New project unlocked · +120 XP · ${S.crystals.length}/8</span>` : ''}
+      ${isNew ? `<span class="kicker">New project unlocked · +120 XP · ${S.crystals.length}/${NP}</span>` : ''}
       <h3>${esc(p.name)}</h3>
       <span class="meta">${esc(p.event)} · ${esc(p.date)}</span>
       <span class="tag">${esc(p.tagline)}</span>
       ${p.stat ? `<span class="stat">${esc(p.stat)}</span>` : ''}
       <div class="chips">${p.stack.map(s => chip(s)).join('')}</div>
       <ul>${p.points.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
+      ${linkButtons(p)}
     </div>
     ${isNew && freshSkills.length ? `<div class="newskills">★ Skills awakened: <b>${freshSkills.map(esc).join(', ')}</b></div>` : ''}`);
 }
@@ -741,11 +748,11 @@ function openResume() {
     <div class="resume">
       <div class="who"><strong>${esc(R.name)}</strong><span>${esc(R.role)} · ${esc(R.location)}</span>
         <div class="email-row" style="margin-top:8px"><span class="email-text" id="emailText">${esc(R.email)}</span><button type="button" class="btn btn-primary" data-copy>Copy</button></div>
-        ${R.linkedin ? `<a href="${esc(R.linkedin)}" target="_blank" rel="noopener" style="color:var(--gold)">LinkedIn</a>` : ''}
+        <span class="links">${R.linkedin ? `<a href="${esc(R.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>` : ''}${R.github ? `<a href="${esc(R.github)}" target="_blank" rel="noopener">GitHub ↗</a>` : ''}${R.source ? `<a href="${esc(R.source)}" target="_blank" rel="noopener">This site’s source code ↗</a>` : ''}</span>
       </div>
       <section><h3>Summary</h3><p>${esc(R.summary)}</p></section>
       <section><h3>Experience</h3>${R.work.map(w => `<div class="item"><div class="row"><strong>${esc(w.role)} · ${esc(w.org)}</strong><span>${esc(w.date)}</span></div></div>`).join('')}</section>
-      <section><h3>Projects</h3>${R.projects.map(p => `<div class="item"><div class="row"><strong>${esc(p.name)}: ${esc(p.tagline)}</strong><span>${esc(p.event)} · ${esc(p.date)}</span></div><div class="chips">${p.stack.map(s => chip(s)).join('')}</div><ul>${p.points.map(s => `<li>${esc(s)}</li>`).join('')}</ul></div>`).join('')}</section>
+      <section><h3>Projects</h3>${R.projects.map(p => `<div class="item"><div class="row"><strong>${esc(p.name)}: ${esc(p.tagline)}</strong><span>${esc(p.event)} · ${esc(p.date)}</span></div><div class="chips">${p.stack.map(s => chip(s)).join('')}</div><ul>${p.points.map(s => `<li>${esc(s)}</li>`).join('')}</ul>${p.links?.length ? `<span>${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener" style="color:var(--gold)">${esc(l.label)} ↗</a>`).join(' · ')}</span>` : ''}</div>`).join('')}</section>
       <section><h3>Skills</h3>${R.skills.map(b => `<div class="item"><strong>${esc(b.branch)}</strong><div class="chips">${b.items.map(([n]) => chip(n)).join('')}</div></div>`).join('')}</section>
       <section><h3>Achievements</h3>${R.achievements.map(a => `<div class="item"><div class="row"><strong>${esc(a.place)} · ${esc(a.name)}</strong><span>${esc(a.date)}</span></div></div>`).join('')}</section>
       <section><h3>Education</h3><div class="item"><div class="row"><strong>${esc(R.education.degree)}</strong><span>${esc(R.education.years)}</span></div><span>${esc(R.education.school)}</span></div></section>
@@ -757,7 +764,7 @@ function openEnding() {
     <div class="ending">
       <span class="kicker">100% complete · LV ${levelOf(S.xp)}</span>
       <div class="big">QUEST<br>COMPLETE</div>
-      <div class="stats"><span>Time <b>${mins}:${secs}</b></span><span>Projects <b>${S.crystals.length}/8</b></span><span>Bugs <b>${S.bugs.length}/${BUG_DEFS.length}</b></span><span>Achievements <b>${S.ach.length}/${ACH.length}</b></span></div>
+      <div class="stats"><span>Time <b>${mins}:${secs}</b></span><span>Projects <b>${S.crystals.length}/${NP}</b></span><span>Bugs <b>${S.bugs.length}/${BUG_DEFS.length}</b></span><span>Achievements <b>${S.ach.length}/${ACH.length}</b></span></div>
       <p style="max-width:52ch">You’ve seen everything Irfan has built so far. The next quest is the one you build together.</p>
       <div class="email-row" style="width:100%"><span class="email-text" id="emailText">${esc(R.email)}</span><button type="button" class="btn btn-primary" data-copy>Copy email</button></div>
       <button type="button" class="btn" data-go="resume">View full resume</button>
@@ -770,7 +777,7 @@ function updateHUD() {
   $('hudLv').textContent = lv >= 10 ? 'LV 10 · MAX' : `LV ${lv}`;
   $('hudXp').style.width = (hi ? (S.xp - lo) / (hi - lo) * 100 : 100) + '%';
   $('hudXpText').textContent = hi ? `${S.xp} / ${hi} XP` : `${S.xp} XP`;
-  $('hudC').textContent = `${S.crystals.length}/8`;
+  $('hudC').textContent = `${S.crystals.length}/${NP}`;
   $('hudB').textContent = `${S.bugs.length}/${BUG_DEFS.length}`;
   $('objective').innerHTML = `<span><b>Next:</b>${esc(nextQuestText())}</span>`;
 }
@@ -1003,7 +1010,7 @@ function start(newGame) {
   if (Panel.open) Panel.close();
   updateHUD(); syncTouch(); save(); cv.focus({preventScroll: true});
   if (isNew) setTimeout(() => { const byte = npcs[0]; face(byte); talk(byte); }, 500);
-  else toast('WELCOME BACK', `LV ${levelOf(S.xp)} · ${S.crystals.length}/8 crystals`);
+  else toast('WELCOME BACK', `LV ${levelOf(S.xp)} · ${S.crystals.length}/${NP} crystals`);
 }
 $('btnStart').addEventListener('click', () => start(false));
 $('btnNew').addEventListener('click', () => start(true));

@@ -6,7 +6,8 @@ window.RESUME = {
   location: 'Hyderabad, India',
   email: 'sirkarks@gmail.com',
   linkedin: '', // paste your LinkedIn URL here, e.g. 'https://www.linkedin.com/in/your-handle'
-  github: '',   // optional
+  github: 'https://github.com/irfansirkar',
+  source: 'https://github.com/irfansirkar/PERSONAL-PORFOLIO-WEBSITE',
 
   summary: 'Computer Science student specialising in Artificial Intelligence and Data Science, building real-world tech: AI model aggregation, fine-tuned assistants, computer vision and full-stack web apps with React and Next.js. I learn fast, work well in teams, and love exploring emerging technologies to solve meaningful problems.',
 
@@ -67,6 +68,7 @@ window.RESUME = {
         'Personalised diet plans, daily photo progress tracking, goal-time estimates and motivational checkpoints.',
         'Recommends an optimal physique for different sports based on height and goals.',
       ],
+      links: [{label: 'Code on GitHub', url: 'https://github.com/irfansirkar/3D-human-exercise-module'}],
     },
     {
       id: 'comparev2', name: 'LLM Compare Engine v2', event: 'CSI Tech Nova', date: 'May 2025', color: '#B9A7F5',
@@ -108,6 +110,21 @@ window.RESUME = {
         '60+ FPS with YOLO11, plus PaliGemma 3B visual question answering with voice commands.',
         'Multi-threaded pipeline with adaptive frame skipping for live feeds.',
       ],
+      links: [
+        {label: 'YOLO11 skin-disease code', url: 'https://github.com/irfansirkar/skin-disease-updated'},
+        {label: 'CNN skin-cancer detector (v1)', url: 'https://github.com/irfansirkar/skin-desease'},
+      ],
+    },
+    {
+      id: 'domainclash', name: 'Domain Clash', event: 'Tech quiz event platform', date: 'Apr 2026', color: '#FF3DCB',
+      tagline: 'Real-time competitive tech quiz with live bidding',
+      stack: ['Next.js', 'TypeScript', 'Supabase', 'Framer Motion', 'Tailwind', 'shadcn/ui'],
+      points: [
+        'Players bid credits on a live question before the options appear. The more people bid, the higher the multiplier (up to 5×).',
+        '10 tech domains, from AI/ML and MLOps to blockchain and quantum computing, with answers checked instantly.',
+        'Admin dashboard to run the event live: activate questions, manage users and domains, and watch the leaderboard update.',
+      ],
+      links: [{label: 'Code on GitHub', url: 'https://github.com/irfansirkar/tech-bid'}],
     },
   ],
 
@@ -130,12 +147,14 @@ window.RESUME = {
       ['API integrations', ['medimap', 'comparev2']],
       ['Streamlit', ['stackfarm', 'teachassist', 'medimap2']],
       ['CUDA', ['medimap2', 'skentics']],
+      ['Supabase', ['domainclash']],
     ]},
     {branch: 'Web & Design', color: '#4ADE80', items: [
       ['HTML & CSS', ['medimap']],
       ['JavaScript', ['medimap']],
       ['React', ['prof']],
-      ['Next.js', ['comparev2']],
+      ['TypeScript', ['domainclash']],
+      ['Next.js', ['comparev2', 'domainclash']],
       ['Figma', ['sage']],
     ]},
     {branch: 'People', color: '#FFC94A', items: [
