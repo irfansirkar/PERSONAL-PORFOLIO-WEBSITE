@@ -22,15 +22,15 @@ document.addEventListener('click', e => { if (!pop.hidden && !pop.contains(e.tar
 
 /* ===== data ===== */
 const P = [
-  {n: 'Skentics', m: 'SK', d: 'Jul 2025', ev: 'Vision project', c: '#FF5A36', t: 'Real-time AI vision system: detection, a vision-language model, OCR and speech on live RTSP streams.', hi: '★ 60+ FPS with YOLO11', st: ['YOLO11', 'PaliGemma 3B', 'Tesseract', 'PyTorch', 'CUDA'], lk: [['YOLO11 code', 'https://github.com/irfansirkar/skin-disease-updated'], ['CNN v1', 'https://github.com/irfansirkar/skin-desease']]},
-  {n: 'MediMap', m: 'MM', d: 'Aug 2024', ev: 'Expogenix 2024', c: '#3D7BFF', t: 'Multi-LLM consensus engine: aggregates answers from several models and validates them for researchers.', hi: '★ −80% manual comparison', st: ['FastAPI', 'BART', 'OpenAI/Groq/Gemini', 'AWS']},
-  {n: 'Domain Clash', m: 'DC', d: 'Apr 2026', ev: 'Live event platform', c: '#C13BEA', t: 'Real-time tech quiz: players bid credits on a question before the options appear, with multipliers up to 5×.', hi: '★ Live bidding + admin dashboard', st: ['Next.js', 'TypeScript', 'Supabase', 'Framer Motion'], lk: [['Code', 'https://github.com/irfansirkar/tech-bid']]},
-  {n: 'TeachAssist', m: 'TA', d: 'Jun 2025', ev: 'SMC Expogenix & AWS Cloud', c: '#F5A300', t: 'AI study co-pilot: RAG over PDFs and docs, OCR on images, and AI-generated practice tests.', hi: '★ RAG + OCR + practice tests', st: ['Gemini', 'LangChain', 'Streamlit', 'PyPDF2']},
-  {n: 'MediMap MM', m: 'M²', d: 'Jun 2025', ev: 'Expogenix', c: '#00B3A4', t: 'Multimodal emergency diagnostics combining text, X-rays and CT scans with an interactive chat.', hi: '★ Text + X-ray + CT', st: ['PyTorch', 'Transformers', 'BiMediX2', 'CUDA']},
-  {n: 'Robust-3D', m: 'R3', d: 'Apr 2025', ev: 'HackRev', c: '#FF4D8D', t: 'Photo-to-3D body model fitness coach with targeted workouts, diet plans and progress tracking.', hi: '★ Lead developer', st: ['Computer Vision', '3D modelling'], lk: [['Code', 'https://github.com/irfansirkar/3D-human-exercise-module']]},
-  {n: 'LLM Compare v2', m: 'LC', d: 'May 2025', ev: 'CSI Tech Nova', c: '#7B4DFF', t: 'Plugin-based LLM comparison engine with analytics, live validation and conflict alerts.', hi: '★ Claude 3 + Gemini', st: ['Next.js', 'FastAPI', 'PEGASUS', 'AWS']},
-  {n: 'Stack-Farm', m: 'SF', d: 'Nov 2024', ev: 'Hackathon', c: '#2EAD5B', t: 'Early plant-disease detection from leaf photos, with a lightweight UI for farmers and field agents.', hi: '★ Built for farmers', st: ['TensorFlow', 'Streamlit', 'Image processing']},
-  {n: 'Medzo', m: 'MZ', d: 'Jan 2024', ev: 'Malla Reddy Hackathon', c: '#FF8A1C', t: 'Domain-restricted AWS chatbot that gives the AWS Club precise, instant technical answers.', hi: '★ Filters non-AWS questions', st: ['Python', 'Boto3', 'LLM']},
+  {n: 'Skentics', m: 'SK', d: 'Jul 2025', ev: 'Vision project', c: '#FF5A36', t: 'Started as a YOLO11 skin-condition detector and grew into a real-time vision system with a vision-language model, OCR and speech on live RTSP streams.', hi: '★ 60+ FPS with YOLO11', st: ['YOLO11', 'PaliGemma 3B', 'Tesseract', 'PyTorch', 'CUDA'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/skin-disease-updated/'], ['Code', 'https://github.com/irfansirkar/skin-disease-updated'], ['CNN v1', 'https://github.com/irfansirkar/skin-desease']]},
+  {n: 'MediMap', m: 'MM', d: 'Aug 2024', ev: 'Expogenix 2024', c: '#3D7BFF', t: 'Multi-LLM consensus engine: aggregates answers from several models and validates them for researchers.', hi: '★ −80% manual comparison', st: ['FastAPI', 'BART', 'OpenAI/Groq/Gemini', 'AWS'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/medimap/'], ['Code', 'https://github.com/irfansirkar/medimap']]},
+  {n: 'Domain Clash', m: 'DC', d: 'Apr 2026', ev: 'Live event platform', c: '#C13BEA', t: 'Real-time tech quiz: players bid credits on a question before the options appear, with multipliers up to 5×.', hi: '★ Live bidding + admin dashboard', st: ['Next.js', 'TypeScript', 'Supabase', 'Framer Motion'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/tech-bid/'], ['Code', 'https://github.com/irfansirkar/tech-bid']]},
+  {n: 'TeachAssist', m: 'TA', d: 'Jun 2025', ev: 'SMC Expogenix & AWS Cloud', c: '#F5A300', t: 'AI study co-pilot: RAG over PDFs and docs, OCR on images, and AI-generated practice tests.', hi: '★ RAG + OCR + practice tests', st: ['Gemini', 'LangChain', 'Streamlit', 'PyPDF2'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/teachassist/'], ['Code', 'https://github.com/irfansirkar/teachassist']]},
+  {n: 'MediMap MM', m: 'M²', d: 'Jun 2025', ev: 'Expogenix', c: '#00B3A4', t: 'Multimodal emergency diagnostics combining text, X-rays and CT scans with an interactive chat.', hi: '★ Text + X-ray + CT', st: ['PyTorch', 'Transformers', 'BiMediX2', 'CUDA'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/medimap-mm/'], ['Code', 'https://github.com/irfansirkar/medimap-mm']]},
+  {n: 'Robust-3D', m: 'R3', d: 'Apr 2025', ev: 'HackRev', c: '#FF4D8D', t: 'Photo-to-3D body model fitness coach with targeted workouts, diet plans and progress tracking.', hi: '★ Lead developer', st: ['Computer Vision', '3D modelling'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/3D-human-exercise-module/'], ['Code', 'https://github.com/irfansirkar/3D-human-exercise-module']]},
+  {n: 'LLM Compare v2', m: 'LC', d: 'May 2025', ev: 'CSI Tech Nova', c: '#7B4DFF', t: 'Plugin-based LLM comparison engine with analytics, live validation and conflict alerts.', hi: '★ Claude 3 + Gemini', st: ['Next.js', 'FastAPI', 'PEGASUS', 'AWS'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/llm-compare-v2/'], ['Code', 'https://github.com/irfansirkar/llm-compare-v2']]},
+  {n: 'Stack-Farm', m: 'SF', d: 'Nov 2024', ev: 'Hackathon', c: '#2EAD5B', t: 'Early plant-disease detection from leaf photos, with a lightweight UI for farmers and field agents.', hi: '★ Built for farmers', st: ['TensorFlow', 'Streamlit', 'Image processing'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/stack-farm/'], ['Code', 'https://github.com/irfansirkar/stack-farm']]},
+  {n: 'Medzo', m: 'MZ', d: 'Jan 2024', ev: 'Malla Reddy Hackathon', c: '#FF8A1C', t: 'Domain-restricted AWS chatbot that gives the AWS Club precise, instant technical answers.', hi: '★ Filters non-AWS questions', st: ['Python', 'Boto3', 'LLM'], lk: [['Live demo ↗', 'https://irfansirkar.github.io/medzo/'], ['Code', 'https://github.com/irfansirkar/medzo']]},
 ];
 const SK = [
   ['Python', 'Py', 'ml', 6], ['PyTorch', 'PT', 'ml', 2], ['TensorFlow', 'TF', 'ml', 1], ['CUDA', 'CU', 'ml', 2], ['LLM fine-tuning', 'FT', 'llm', 0],
@@ -65,8 +65,11 @@ const ART = {
 };
 let kk = ''; [12, 12, 11, 10].forEach((n, r) => { for (let i = 0; i < n; i++) { const w = (r === 1 && i === 1) || (r === 2 && i < 3); kk += `<rect x="${14 + i * 20.5 + r * 6}" y="${18 + r * 23}" width="17" height="18" rx="3" fill="${w ? '#F0643A' : '#EDEAE2'}"/>`; } });
 ART.keys = ART.keys.replace('KEYS', kk);
-const STK = [['pad', 7, 11, 17, -18, .35], ['keys', 68, 10, 25, 12, .5], ['hand', 4, 60, 11, -12, -.15, 'm-hide'], ['stick', 39, 74, 15, -6, .1], ['crt', 79, 60, 14, 9, -.2], ['coin', 33, 17, 5, 0, .6], ['d20', 61, 74, 6.5, 14, -.05, 'm-hide'], ['heart', 23, 80, 4.2, -8, .25]];
-$('stickers').innerHTML = STK.map(([k, x, y, w, r, sp, cls], j) => `<div class="par ${cls || ''}" data-sp="${sp}" style="left:${x}%;top:${y}%"><div class="stk" data-k="${k}" style="--w:${w}cqw;--r:${r}deg"><div class="bob" style="--bd:-${(j * .7).toFixed(1)}s">${ART[k]}</div></div></div>`).join('');
+ART.me = `<div class="polaroid"><img src="img/irfan-hero.jpg" alt="Mohammad Irfan Sirkar in a green suit" width="440" height="550" draggable="false"><span>PLAYER 1</span></div>`;
+const STK = [['pad', 7, 11, 17, -18, .35], ['keys', 68, 10, 25, 12, .5], ['me', 4, 65, 11, -7, -.1], ['hand', 18, 67, 8, 10, -.15, 'm-hide'], ['stick', 39, 74, 15, -6, .1], ['crt', 79, 60, 14, 9, -.2], ['coin', 33, 17, 5, 0, .6], ['d20', 61, 74, 6.5, 14, -.05, 'm-hide'], ['heart', 29, 86, 4.2, -8, .25]];
+/* on phones the headline stacks taller, so the photo starts lower */
+if (innerWidth <= 700) STK.find(s => s[0] === 'me').splice(1, 2, 3, 72);
+$('stickers').innerHTML = STK.map(([k, x, y, w, r, sp, cls], j) => `<div class="par ${cls || ''}" data-sp="${sp}" style="left:${x}%;top:${y}%"><div class="bob" style="--bd:-${(j * .7).toFixed(1)}s"><div class="stk" data-k="${k}" style="--w:${w}cqw;--r:${r}deg">${ART[k]}</div></div></div>`).join('');
 
 /* ===== hero interactions ===== */
 const hero = $('hero'), st = {coins: 0, hp: 3};
@@ -86,6 +89,7 @@ hero.querySelectorAll('.par').forEach(par => {
       if (k === 'coin') { fx(el, 'fx-spin'); st.coins++; hud(); popAt(x, y, '+1 COIN', '#E8A317'); }
       else if (k === 'd20') { fx(el, 'fx-roll'); const n = 1 + (Math.random() * 20 | 0); setTimeout(() => el.querySelector('.dn').textContent = n, 300); popAt(x, y, n === 20 ? 'CRIT! 20' : 'ROLLED ' + n, '#C2185B'); }
       else if (k === 'heart') { fx(el, 'fx-pulse'); st.hp = Math.min(3, st.hp + 1); hud(); popAt(x, y, '+1 HP', '#FF3355'); }
+      else if (k === 'me') { fx(el, 'fx-pulse'); mini.jump(true); popAt(x, y, 'PLAYER 1 READY!'); }
       else if (k === 'cart') { fx(el, 'fx-shake'); mini.reset(); popAt(x, y, 'NEW GAME'); }
       else { fx(el, 'fx-shake'); mini.jump(true); popAt(x, y, 'JUMP!'); }
     }
@@ -184,45 +188,70 @@ document.querySelectorAll('[data-rv]').forEach(el => rio.observe(el));
 /* ===== scroll engine ===== */
 const pars = [...hero.querySelectorAll('.par')], work = $('work'), track = $('track'), nav = $('nav');
 let lastY = scrollY, vel = 0, mx = 0;
+/* geometry is measured once per resize so scrolling never forces a layout */
+const els = {prog: $('prog'), hl: $('hl'), pbar: $('pbar'), drawP: $('drawP'), marq: $('marq')}, words = [...$('words').children], mss = [...$('map').querySelectorAll('.ms')], secs = [...document.querySelectorAll('main > section[id]')], navA = [...document.querySelectorAll('.links a')];
+const sp = pars.map(p => +p.dataset.sp);
+let G = {}, lastN = -1, lastCur = null;
 function sizeWork() { if (innerWidth <= 760) { work.style.height = ''; return; } work.style.height = (track.scrollWidth - innerWidth + innerHeight + 80) + 'px'; }
+const pageTop = el => el.getBoundingClientRect().top + scrollY;
+function measure() {
+  const w = $('words'), map = $('map');
+  G = {vh: innerHeight, wide: innerWidth > 760, H: document.documentElement.scrollHeight - innerHeight, hh: hero.offsetHeight,
+    wT: pageTop(w), wH: w.offsetHeight, kT: pageTop(work), kH: work.offsetHeight - innerHeight, shift: track.scrollWidth - innerWidth + 40,
+    mT: pageTop(map), mH: map.offsetHeight, msY: mss.map(m => m.offsetTop + m.offsetHeight / 2), sT: secs.map(pageTop), half: els.marq.scrollWidth / 2};
+}
 function onScroll() {
-  const y = scrollY, H = document.documentElement.scrollHeight - innerHeight;
-  $('prog').style.transform = `scaleX(${H ? y / H : 0})`;
+  const y = scrollY, vh = G.vh;
+  els.prog.style.transform = `scaleX(${G.H ? y / G.H : 0})`;
   nav.classList.toggle('sm', y > 30);
   vel += Math.abs(y - lastY); lastY = y;
-  if (!reduce) {
-    const hh = hero.offsetHeight;
-    if (y < hh * 1.2) { pars.forEach(p => p.style.transform = `translateY(${(-y * +p.dataset.sp).toFixed(1)}px)`); const k = clamp(y / hh, 0, 1); $('hl').style.transform = `translateY(calc(-55% + ${y * .25}px)) scale(${1 - k * .12})`; $('hl').style.opacity = 1 - k * 1.1; }
+  if (!reduce && y < G.hh * 1.2) {
+    for (let i = 0; i < pars.length; i++) pars[i].style.transform = `translate3d(0,${(-y * sp[i]).toFixed(1)}px,0)`;
+    const k = clamp(y / G.hh, 0, 1); els.hl.style.transform = `translateY(calc(-55% + ${(y * .25).toFixed(1)}px)) scale(${1 - k * .12})`; els.hl.style.opacity = 1 - k * 1.1;
   }
   /* about words */
-  const w = $('words'), wr = w.getBoundingClientRect(), p = clamp((innerHeight * .85 - wr.top) / (wr.height + innerHeight * .4), 0, 1), sp = w.children, n = Math.round(p * sp.length);
-  for (let i = 0; i < sp.length; i++) sp[i].classList.toggle('on', i < n);
+  const p = clamp((vh * .85 - (G.wT - y)) / (G.wH + vh * .4), 0, 1), n = Math.round(p * words.length);
+  if (n !== lastN) { for (let i = 0; i < words.length; i++) words[i].classList.toggle('on', i < n); lastN = n; }
   /* pinned work */
-  if (innerWidth > 760) { const r = work.getBoundingClientRect(), tot = work.offsetHeight - innerHeight, k = clamp(-r.top / tot, 0, 1); track.style.transform = `translateX(${-(track.scrollWidth - innerWidth + 40) * k}px)`; $('pbar').style.transform = `scaleX(${k})`; }
+  if (G.wide) { const k = clamp((y - G.kT) / G.kH, 0, 1); track.style.transform = `translate3d(${(-G.shift * k).toFixed(1)}px,0,0)`; els.pbar.style.transform = `scaleX(${k})`; }
   /* journey */
-  const map = $('map'), mr = map.getBoundingClientRect(), line = innerHeight * .62 - mr.top, jp = clamp(line / mr.height, 0, 1);
-  $('drawP').style.strokeDashoffset = 1 - jp;
-  map.querySelectorAll('.ms').forEach(m => m.classList.toggle('lit', m.offsetTop + m.offsetHeight / 2 < line));
+  const line = vh * .62 - (G.mT - y);
+  els.drawP.style.strokeDashoffset = 1 - clamp(line / G.mH, 0, 1);
+  for (let i = 0; i < mss.length; i++) mss[i].classList.toggle('lit', G.msY[i] < line);
   /* active nav link */
-  let cur = ''; document.querySelectorAll('main > section[id]').forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .4) cur = s.id; });
-  document.querySelectorAll('.links a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur));
+  let cur = ''; for (let i = 0; i < secs.length; i++) if (G.sT[i] - y < vh * .4) cur = secs[i].id;
+  if (cur !== lastCur) { navA.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur)); lastCur = cur; }
 }
-let queued = false;
-addEventListener('scroll', () => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; onScroll(); }); }, {passive: true});
-addEventListener('resize', () => { sizeWork(); layoutMap(); onScroll(); });
+function relayout() { sizeWork(); layoutMap(); measure(); onScroll(); }
+addEventListener('scroll', onScroll, {passive: true});
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(relayout, 120); });
+
+/* smooth wheel scrolling */
+let lenis = null;
+if (window.Lenis && !reduce) {
+  lenis = new Lenis({lerp: .1, wheelMultiplier: 1, smoothWheel: true});
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a) return;
+    const t = a.getAttribute('href') === '#top' ? 0 : document.querySelector(a.getAttribute('href')); if (t === null) return;
+    e.preventDefault(); lenis.scrollTo(t, {duration: 1.4});
+  });
+}
 
 /* ===== frame loop ===== */
 let acc = 0, last = performance.now();
 const heroVis = {v: true}; new IntersectionObserver(([e]) => heroVis.v = e.isIntersecting).observe(hero);
 function frame(now) {
+  if (lenis) lenis.raf(now);
   acc += Math.min(.1, Math.max(0, (now - last) / 1000)); last = now;
   while (acc > 1 / 60) { acc -= 1 / 60; if (!reduce) { if (heroVis.v) mini.step(); if (playing) big.step(false); } }
   if (heroVis.v) mini.draw();
   if (overPlay || playing) big.draw();
-  vel *= .9; mx -= 1.2 + Math.min(vel, 80) * .15; const half = $('marq').scrollWidth / 2; if (half && -mx > half) mx += half; $('marq').style.transform = `translateX(${mx.toFixed(1)}px)`;
+  vel *= .9; mx -= 1.2 + Math.min(vel, 80) * .15; if (G.half && -mx > G.half) mx += G.half; els.marq.style.transform = `translate3d(${mx.toFixed(1)}px,0,0)`;
   requestAnimationFrame(frame);
 }
 
 setPal(store.get('pal', 'sunset'), true);
-document.fonts.ready.then(() => { sizeWork(); layoutMap(); onScroll(); mini.draw(); big.draw(); requestAnimationFrame(frame); });
+measure();
+document.fonts.ready.then(() => { relayout(); mini.draw(); big.draw(); requestAnimationFrame(frame); });
+let ro; new ResizeObserver(() => { clearTimeout(ro); ro = setTimeout(() => { measure(); onScroll(); }, 100); }).observe(document.body);
 })();

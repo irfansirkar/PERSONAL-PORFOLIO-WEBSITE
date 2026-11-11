@@ -10,6 +10,9 @@ html[data-pal="lemon"]{--sky1:#FFD84D;--sky2:#FFF3C4;--paper:#FFFBEE;--card:#FFF
 html[data-pal="night"]{--sky1:#1B1745;--sky2:#4A2A78;--paper:#121026;--card:#1E1B3C;--ink:#F2F0FF;--muted:#A9A3D1;--acc:#FF3EA5;--acc2:#36E8FF;--grid:rgba(255,255,255,.07);--gsky:#221C55;--ghill:#4A2A78;color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;transition:background .5s,color .5s;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
@@ -79,7 +82,7 @@ html[data-pal="night"] .hero .sky::after{content:"";position:absolute;inset:0 0 
 .par{position:absolute;z-index:3;will-change:transform}
 .stk{width:var(--w);transform:rotate(var(--r));cursor:grab;touch-action:none;filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 5px 0 #fff) drop-shadow(0 -5px 0 #fff) drop-shadow(2px 0 0 var(--acc)) drop-shadow(-2px 0 0 var(--acc)) drop-shadow(0 2px 0 var(--acc)) drop-shadow(0 -2px 0 var(--acc)) drop-shadow(0 12px 12px rgba(0,0,0,.22))}
 .stk.drag{cursor:grabbing}
-.stk .bob{animation:bob 4s ease-in-out infinite;animation-delay:var(--bd)}
+.bob{animation:bob 4s ease-in-out infinite;animation-delay:var(--bd);will-change:transform}
 @keyframes bob{50%{transform:translateY(-4%) rotate(1.5deg)}}
 .stk svg{display:block;width:100%;height:auto;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 .stk:hover svg{transform:scale(1.07) rotate(-3deg)}
@@ -89,7 +92,11 @@ html[data-pal="night"] .hero .sky::after{content:"";position:absolute;inset:0 0 
 @keyframes spin{to{transform:rotateY(720deg)}}
 .stk.fx-roll svg{animation:roll .6s cubic-bezier(.3,1.2,.4,1)}
 @keyframes roll{50%{transform:rotate(200deg) scale(.85)}100%{transform:rotate(360deg)}}
-.stk.fx-pulse svg{animation:pulse .5s cubic-bezier(.3,1.8,.5,1)}
+.stk.fx-pulse svg,.stk.fx-pulse .polaroid{animation:pulse .5s cubic-bezier(.3,1.8,.5,1)}
+.polaroid{background:#fff;padding:7% 7% 0;border-radius:4px;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.polaroid img{display:block;width:100%;height:auto;border-radius:2px;pointer-events:none}
+.polaroid span{display:block;text-align:center;font:400 clamp(9px,1.05cqw,15px)/2.6 var(--f-px);letter-spacing:.1em;color:#141414}
+.stk:hover .polaroid{transform:scale(1.05) rotate(-2deg)}
 @keyframes pulse{40%{transform:scale(1.35)}}
 .coin-spin{transform-origin:center;animation:cspin 2.4s ease-in-out infinite}
 @keyframes cspin{0%,60%,100%{transform:scaleX(1)}80%{transform:scaleX(.1)}}
@@ -106,7 +113,8 @@ html[data-pal="night"] .hero .sky::after{content:"";position:absolute;inset:0 0 
 .words span.hw.on{color:var(--acc)}
 .pcard{background:var(--card);border:3px solid var(--ink);border-radius:24px;box-shadow:8px 8px 0 var(--ink);padding:26px;display:grid;gap:18px;transform:rotate(1.5deg)}
 .pcard .top{display:flex;gap:16px;align-items:center}
-.ava{width:76px;aspect-ratio:1;border-radius:18px;background:var(--acc);display:grid;place-items:center;font:900 28px var(--f-head);letter-spacing:-.04em;color:#fff;border:3px solid var(--ink);flex:none}
+.ava{width:76px;aspect-ratio:1;border-radius:18px;background:var(--acc);display:grid;place-items:center;font:900 28px var(--f-head);letter-spacing:-.04em;color:#fff;border:3px solid var(--ink);flex:none;overflow:hidden}
+.ava img{width:100%;height:100%;object-fit:cover;display:block}
 .pcard h3{margin:0;font:900 24px/1.05 var(--f-head);letter-spacing:-.02em}
 .pcard .cls{font:700 12px var(--f-mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
 .bars{display:grid;gap:10px}
